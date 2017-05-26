@@ -252,6 +252,10 @@ if [ "$WERCKER_HUGO_BUILD_CLEAN_BEFORE" == "true" ]; then
   rm -rf ${WERCKER_SOURCE_DIR}/${WERCKER_HUGO_BUILD_BASEDIR}/public/*
 fi
 
-echo "Running the Hugo command"
 
-eval ${HUGO_COMMAND} --source="${WERCKER_SOURCE_DIR}/${WERCKER_HUGO_BUILD_BASEDIR}" ${WERCKER_HUGO_BUILD_FLAGS}
+echo "Checking pygments version and supported languages"
+pygmentize -V
+pygmentize -L
+
+echo "Running the Hugo command with verbose"
+eval ${HUGO_COMMAND} -v --source="${WERCKER_SOURCE_DIR}/${WERCKER_HUGO_BUILD_BASEDIR}" ${WERCKER_HUGO_BUILD_FLAGS}
