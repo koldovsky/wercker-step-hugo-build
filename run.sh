@@ -5,7 +5,7 @@ LATEST_HUGO_VERSION=0.21
 command_exists()
 {
     echo "checking for command $1"
-    echo hash "$1"
+    hash "$1"
     hash "$1" 2>/dev/null
 }
 
@@ -260,7 +260,7 @@ pygmentize -V
 #pygmentize -L
 
 echo "Checking hugo version"
-hugo version
+eval ${HUGO_COMMAND} version
 
 echo "Running the Hugo command with verbose"
 eval ${HUGO_COMMAND} -v --source="${WERCKER_SOURCE_DIR}/${WERCKER_HUGO_BUILD_BASEDIR}" ${WERCKER_HUGO_BUILD_FLAGS}
