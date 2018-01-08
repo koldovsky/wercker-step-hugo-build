@@ -1,19 +1,96 @@
-2017-05-26
-=================
+1.25.2 / 2018-01-08
+==================
 
-* Added verbose options
+ * Update Hugo default to 0.32.3
 
+1.25.1 / 2018-01-02
+==================
+
+ * Update Hugo default to 0.32.1
+ 
+1.25.0 / 2018-01-01
+==================
+
+ * Update Hugo default to 0.32
+
+1.24.0 / 2017-11-28
+==================
+
+ * Update Hugo default to 0.31.1
+
+1.23.3 / 2017-11-03
+==================
+
+ * Ensure there is a content directory available, as per #42
+
+1.23.2 / 2017-10-20
+==================
+
+ * Update Hugo default to 0.30.2
+
+1.23.1 / 2017-10-19
+==================
+
+ * Update Hugo default to 0.30.1
+
+1.23.0 / 2017-10-17
+==================
+
+ * Update Hugo default to 0.30
+
+1.22.0 / 2017-09-30
+==================
+
+ * Update Hugo default to 0.29
+
+1.21.1 / 2017-09-15
+==================
+
+  * Update Hugo version to 0.27.1
+
+1.21.0 / 2017-09-12
+==================
+
+ * Update Hugo default to 0.27
+
+1.20.0 / 2017-08-20
+==================
+
+ * Update Hugo default to 0.26
+ * Make it easier to update included Hugo versions in wercker.yml
+
+1.19.0 / 2017-06-25
+==================
+
+ * Update Hugo default to 0.24.1
+
+1.18.0 / 2017-06-17
+==================
+
+ * Update Hugo default to 0.23 (thanks to [sigma](https://github.com/sigma))
+ * Update the Hugo GitHub organization to gohugoio (thanks to [sigma](https://github.com/sigma))
+
+1.17.0 / 2017-05-30
+==================
+
+  * Update Hugo default to 0.21
+
+1.16.3 / 2017-04-30
+==================
+
+  * make 0.20.6 the default (thanks to [sigma](https://github.com/sigma))
+  * fix hugo command location (thanks to [sigma](https://github.com/sigma))
 
 1.16.2 / 2017-04-18
 ==================
 
   * Update default to Hugo 0.20.2
-  
+
 1.16.1 / 2017-04-16
 ==================
 
   * Update default to Hugo 0.20.1
- 
+
 1.16.0 / 2017-04-11
 ==================
 
@@ -86,7 +163,7 @@
 ==================
 
   * Fix pygments being installed when not wanted
-  
+
 1.9.1 / 2016-05-05
 ==================
 

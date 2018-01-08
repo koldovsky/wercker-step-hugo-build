@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LATEST_HUGO_VERSION=0.21
+LATEST_HUGO_VERSION=0.32.3
 
 command_exists()
 {
@@ -106,18 +106,18 @@ install_hugo()
     if [ "$WERCKER_HUGO_BUILD_VERSION" == "HEAD" ]; then
         install_golang
         export GOPATH=$WERCKER_STEP_ROOT/gopath
-        go get -v github.com/spf13/hugo
+        go get -v github.com/gohugoio/hugo
         HUGO_COMMAND=${GOPATH}/bin/hugo
     else
         # The naming format was changed for version 0.16
         if [ "$WERCKER_HUGO_BUILD_VERSION" == "0.16" ]; then
-          curl -sL https://github.com/spf13/hugo/releases/download/v0.16/hugo_0.16_linux-64bit.tgz -o hugo_0.16_linux-64bit.tgz
+          curl -sL https://github.com/gohugoio/hugo/releases/download/v0.16/hugo_0.16_linux-64bit.tgz -o hugo_0.16_linux-64bit.tgz
           tar xzf hugo_0.16_linux-64bit.tgz
         elif [ "$WERCKER_HUGO_BUILD_VERSION" == "0.15" ] || [ "$WERCKER_HUGO_BUILD_VERSION" == "0.14" ] || [ "$WERCKER_HUGO_BUILD_VERSION" == "0.13" ]; then
-          curl -sL https://github.com/spf13/hugo/releases/download/v${WERCKER_HUGO_BUILD_VERSION}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz -o ${WERCKER_STEP_ROOT}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz
+          curl -sL https://github.com/gohugoio/hugo/releases/download/v${WERCKER_HUGO_BUILD_VERSION}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz -o ${WERCKER_STEP_ROOT}/hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz
           tar xzf hugo_${WERCKER_HUGO_BUILD_VERSION}_linux_amd64.tar.gz
         else
-          curl -sL https://github.com/spf13/hugo/releases/download/v${WERCKER_HUGO_BUILD_VERSION}/hugo_${WERCKER_HUGO_BUILD_VERSION}_Linux-64bit.tar.gz -o hugo_${WERCKER_HUGO_BUILD_VERSION}_Linux-64bit.tar.gz
+          curl -sL https://github.com/gohugoio/hugo/releases/download/v${WERCKER_HUGO_BUILD_VERSION}/hugo_${WERCKER_HUGO_BUILD_VERSION}_Linux-64bit.tar.gz -o hugo_${WERCKER_HUGO_BUILD_VERSION}_Linux-64bit.tar.gz
           tar xzf hugo_${WERCKER_HUGO_BUILD_VERSION}_Linux-64bit.tar.gz
         fi
 
@@ -254,6 +254,10 @@ if [ "$WERCKER_HUGO_BUILD_CLEAN_BEFORE" == "true" ]; then
   rm -rf ${WERCKER_SOURCE_DIR}/${WERCKER_HUGO_BUILD_BASEDIR}/public/*
 fi
 
+# Ensure a content directory is present as per Issue #42
+mkdir -p ${WERCKER_SOURCE_DIR}/${WERCKER_HUGO_BUILD_BASEDIR}/content
+
+echo "Running the Hugo command"
 
 echo "Checking pygments version"
 pygmentize -V
